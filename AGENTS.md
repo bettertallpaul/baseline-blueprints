@@ -20,3 +20,16 @@ Assume projects run inside containers by default.
   3. `docker compose logs --tail=200 <service>`  
   4. rebuild/restart: `docker compose down && docker compose up -d --build` 
 - Vite HMR: Standard native file system events work flawlessly under OrbStack. Do not use filesystem polling (`usePolling: true`) in `vite.config.ts`, as it consumes excessive host CPU resources.
+
+## Project Execution & Integration Details
+
+- **Frontend Container Ports**: Serves Vite on container port `5173` mapped to host port `5180`.
+- **Backend Container Ports**: Serves Express on container port `3000` mapped to host port `3080`.
+- **Workspace Directories**:
+  - `frontend/`: Vite React SPA with global `CartContext` matching `DESIGN.md`.
+  - `backend/`: Express API server utilizing flat-file database `db.json`.
+- **Developer Workflows**:
+  - Start the application with `make dev`.
+  - Rebuild image assets using `make build`.
+  - Verify container status with `docker compose ps` and check logs using `docker compose logs -f`.
+  - Execute testing commands using `make test`.
