@@ -16,13 +16,13 @@ export const initialData = {
       basePrice: 1200,
       description: "Modular birch platform bed.",
       detailedDescription: "Constructed from solid, sustainably sourced timber. The frame utilizes traditional finger joinery for structural integrity that requires zero hardware for assembly. The result is a monolithic form that anchors the bedroom.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuALflyJqzJUrELr_xzUkaxsfB-rtwaGQLoahW1UFJtue-gP6nzqvo5AdLuAaTtAJhGEo9J3rm04G_povoxJm2vIC8Ghas6svkSVNNo3x80t9TuhU7Qz8v1_s1O8pjC1SJGvc7vHLFuqGVCl2Abh5jPji5RJZw2IbTL_fvXz4PKAo_BHHWQ_IlZEa6dU9vK4UJSurggmDRiXLmHLoWPYFMUFEXVjcCndHc6WTa5nb3qz_XhDiQZqh59JjndP_oZmHuStekFs-1ofVRs",
-      specImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJDrD2HafNiNmsFXtDCYwh5cvZ5Fne0C33J8xzUArbyC5hT7sn_Ee4xhI2IrJbxA3W-IbVjUwZtd3euDnOQJNIoXrkjrE-YgDO4kCTSa9NRehYqwR3w5nxIaZYQ5huDqG11YahwM1s2uiiMDnG5NJk_S0LyGHtusNiHIf_Z0S7HmMcEVnb1odUCzQ3cAu-5qOYF20evwXDAlC9VdoIHAzrT2QC8KfL7vYUarOILl4vptAU6EbI7ITPl4kHfVc4SEtFqkJyJ7t1x-g",
+      image: "/assets/bed_main.png",
+      specImage: "/assets/bed_technical_diagram.png",
       detailImages: [
-        { src: "/assets/bed_detail_joinery.png", label: "DETAIL A: FINGER JOINERY" },
-        { src: "/assets/bed_nightstand_set.png", label: "DETAIL B: FLOATING NIGHTSTAND" },
-        { src: "/assets/material_oak.png", label: "MAT: OAK" },
-        { src: "/assets/material_birch.png", label: "MAT: BIRCH" }
+        { src: "/assets/bed_detail_headrest.png", label: "Headrest" },
+        { src: "/assets/bed_detail_joint.png", label: "Finger Joint" },
+        { src: "/assets/bed_detail_side_table.png", label: "Side Table" },
+        { src: "/assets/bed_detail_slats.png", label: "Slats" }
       ],
       options: {
         sizes: [
