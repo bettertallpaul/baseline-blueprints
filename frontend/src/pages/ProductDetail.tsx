@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import TopNavBar from '../components/TopNavBar.tsx';
 import CartDrawer from '../components/CartDrawer.tsx';
@@ -294,7 +294,7 @@ export default function ProductDetail({ id: propId }: ProductDetailProps) {
                     className="w-full bg-primary text-on-primary py-4 text-button font-button hover:bg-on-primary-fixed-variant transition-colors tracking-widest"
                     type="button"
                   >
-                    ADD TO PROJECT
+                    Add to Project
                   </button>
                   <p className="text-label-caps font-label-caps text-secondary text-center mt-4">
                     Ships in 4-6 weeks

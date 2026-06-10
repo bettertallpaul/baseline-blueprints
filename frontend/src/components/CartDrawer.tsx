@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext.tsx';
 
@@ -142,8 +141,8 @@ export default function CartDrawer() {
           <footer className="p-gutter border-t border-on-surface bg-surface shrink-0 flex flex-col">
             <div className="flex justify-between items-end mb-6">
               <div className="flex flex-col">
-                <span class="font-label-caps text-label-caps text-on-surface-variant mb-1">Project Summary</span>
-                <span class="font-body-md text-body-md font-bold tracking-wide">Subtotal</span>
+                <span className="font-label-caps text-label-caps text-on-surface-variant mb-1">Project Summary</span>
+                <span className="font-body-md text-body-md font-bold tracking-wide">Subtotal</span>
               </div>
               <span className="font-headline-md text-headline-md tracking-tight">
                 ${subtotal.toLocaleString()}
