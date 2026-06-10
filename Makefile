@@ -1,4 +1,4 @@
-.PHONY: up down dev install shell build test
+.PHONY: up down dev install shell build test seed
 
 up:
 	docker compose up -d
@@ -22,3 +22,6 @@ build:
 test:
 	docker compose run --rm frontend pnpm test -- --run || true
 	docker compose run --rm backend pnpm test || true
+
+seed:
+	docker compose exec backend node seed.js

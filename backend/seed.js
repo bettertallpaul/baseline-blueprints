@@ -64,23 +64,23 @@ export const initialData = {
       basePrice: 2800,
       description: "Configurable charcoal modular sofa.",
       detailedDescription: "Designed for endless adaptability. The Seating Blueprint is a modular sofa system with a solid hardwood core and high-resiliency foam cushions wrapped in premium felt wool. Rearrange the layout as your living space evolves.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAEmI__A4ZMIQkk63IRkjxN3VmYKSDLlsncL-Z_16eIFxJeyKUrr2blxgXnme09dcKPpA5mGqZ88sKyBmAtWM0gFXOGMjRmeus-kjAcrO0sP7rU_R6ZOr7dvFnf_VnVh5UnMVn5mgxTjg9amTJOrdqmVp3GF11-urc075QTbFwaXbLl7ds7qcYuB5UZdcWa7L0Nt0FbFoCa_D0DW-M6R5MvTpR-KA7aKynptRNRK3bu7cGWEvLBrJBozCetzCdHhirVQJR09zG_YBg",
-      specImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJDrD2HafNiNmsFXtDCYwh5cvZ5Fne0C33J8xzUArbyC5hT7sn_Ee4xhI2IrJbxA3W-IbVjUwZtd3euDnOQJNIoXrkjrE-YgDO4kCTSa9NRehYqwR3w5nxIaZYQ5huDqG11YahwM1s2uiiMDnG5NJk_S0LyGHtusNiHIf_Z0S7HmMcEVnb1odUCzQ3cAu-5qOYF20evwXDAlC9VdoIHAzrT2QC8KfL7vYUarOILl4vptAU6EbI7ITPl4kHfVc4SEtFqkJyJ7t1x-g", // reuse bed diagram or similar for consistency
+      image: "/assets/seating_main.png",
+      specImage: "/assets/seating_technical_diagram.png",
       detailImages: [
-        { src: "/assets/table_detail_joinery.png", label: "DETAIL A: PRECISION CUSHIONS" },
-        { src: "/assets/table_bench_set.png", label: "DETAIL B: MODULAR INTERLOCK" },
-        { src: "/assets/material_oak.png", label: "MAT: OAK FRAME" },
-        { src: "/assets/material_birch.png", label: "MAT: BIRCH FRAME" }
+        { src: "/assets/seating_detail_backseat.png", label: "Wool Cover" },
+        { src: "/assets/seating_detail_leg.png", label: "Hardwood Legs" },
+        { src: "/assets/seating_detail_ottoman.png", label: "Quality" },
+        { src: "/assets/seating_detail_quality_comfort.png", label: "Ottoman" }
       ],
       options: {
         sizes: [
           { id: "2seater", name: "2-Seater", priceModifier: -400 },
           { id: "3seater", name: "3-Seater", priceModifier: 0 },
-          { id: "sectional", name: "Sectional (4-Seater)", priceModifier: 800 }
+          { id: "sectional", name: "Sectional", priceModifier: 800 }
         ],
         materials: [
-          { id: "charcoal", name: "Charcoal Wool", color: "#3a3b3c", priceModifier: 0 },
-          { id: "ash", name: "Ash Grey Felt", color: "#8a8b8c", priceModifier: 150 }
+          { id: "cream", name: "Cream Wool", color: "#f6ead4", priceModifier: 0 },
+          { id: "cloud", name: "Cloud Felt", color: "#d8d8d8", priceModifier: 150 }
         ]
       },
       addons: [
@@ -112,23 +112,23 @@ export const initialData = {
       basePrice: 850,
       description: "Steel and oak minimalist shelving.",
       detailedDescription: "A heavy-duty, grid-based storage system designed for architectural spaces. The powder-coated steel frame supports solid hardwood shelves that can be positioned at 3-inch increments, presenting a perfect marriage of industrial function and wood warmth.",
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAdg8PJtAPaMwqdHnSypDqbQP76llQ4c38gFL7laSiTl8AS_QcEbk7gB0xLmN5eL_6fMQlv_N7t1fzgSkv_Er8tjsiKmq9znwe9d1di-0te2JRzqLCoviG8MK9EU5LRsakc3Esf2glcMWfIqytT8fwsEzcd46RvfZKKtLRaYR19cRfBg4HZYHLt2henyhl91Rh8A3dADu9q6_HfLWS1bFGrERMcHNHgyjc7z9ko6B27Elw6a57wHyh35fHoRjnx4GLpzev12aNtnY4",
-      specImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDJDrD2HafNiNmsFXtDCYwh5cvZ5Fne0C33J8xzUArbyC5hT7sn_Ee4xhI2IrJbxA3W-IbVjUwZtd3euDnOQJNIoXrkjrE-YgDO4kCTSa9NRehYqwR3w5nxIaZYQ5huDqG11YahwM1s2uiiMDnG5NJk_S0LyGHtusNiHIf_Z0S7HmMcEVnb1odUCzQ3cAu-5qOYF20evwXDAlC9VdoIHAzrT2QC8KfL7vYUarOILl4vptAU6EbI7ITPl4kHfVc4SEtFqkJyJ7t1x-g",
+      image: "/assets/storage_main.png",
+      specImage: "/assets/storage_technical_diagram.png",
       detailImages: [
-        { src: "/assets/table_detail_joinery.png", label: "DETAIL A: GRID JOINERY" },
-        { src: "/assets/table_bench_set.png", label: "DETAIL B: SHELF BRACKETS" },
-        { src: "/assets/material_oak.png", label: "MAT: OAK" },
-        { src: "/assets/material_birch.png", label: "MAT: BIRCH" }
+        { src: "/assets/storage_detail_metal_grid.png", label: "Metal Grid" },
+        { src: "/assets/storage_detail_metal_structure.png", label: "Steel Frame" },
+        { src: "/assets/storage_detail_metal_structure_with_wood_shelf.png", label: "Shelf" },
+        { src: "/assets/storage_detail_wood_storage.png", label: " Module" }
       ],
       options: {
         sizes: [
-          { id: "3shelf", name: "3-Shelf Unit", priceModifier: -150 },
-          { id: "5shelf", name: "5-Shelf Unit", priceModifier: 0 },
-          { id: "double", name: "Double-Wide Grid", priceModifier: 400 }
+          { id: "2shelf", name: "5 x 2", priceModifier: -150 },
+          { id: "5shelf", name: "5 x 5", priceModifier: 0 },
+          { id: "double", name: "Double", priceModifier: 400 }
         ],
         materials: [
-          { id: "oak_black", name: "Light Oak / Black Steel", color: "#8b7e74", priceModifier: 0 },
-          { id: "birch_white", name: "Birch / Raw Steel", color: "#e6d5b8", priceModifier: 50 }
+          { id: "oak_black", name: "Light Oak", color: "#8b7e74", priceModifier: 0 },
+          { id: "birch_white", name: "Birch", color: "#e6d5b8", priceModifier: 50 }
         ]
       },
       addons: [
@@ -171,8 +171,7 @@ export const initialData = {
       options: {
         sizes: [
           { id: "6seater", name: "6-Seater", priceModifier: -200 },
-          { id: "8seater", name: "8-Seater", priceModifier: 0 },
-          { id: "10seater", name: "10-Seater", priceModifier: 300 }
+          { id: "8seater", name: "8-Seater", priceModifier: 0 }
         ],
         materials: [
           { id: "birch", name: "Natural Birch", color: "#e6d5b8", priceModifier: -100 },
