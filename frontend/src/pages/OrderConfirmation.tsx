@@ -1,5 +1,4 @@
-import React from 'react';
-import { useLocation, Link, Navigate } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import TopNavBar from '../components/TopNavBar.tsx';
 import Footer from '../components/Footer.tsx';
 

@@ -20,9 +20,11 @@ This document details the codebase structure, database models, state management,
 │   │   ├── components/        # Shared Layout Components (TopNavBar, Footer, CartDrawer)
 │   │   ├── context/           # Cart State Provider
 │   │   ├── pages/             # Route Page Containers (Home, ProductDetail, Cart, Checkout, OrderConfirmation)
+│   │   ├── providers/         # Custom wrapper providers (GrowthBook SDK, etc.)
 │   │   ├── App.tsx            # Routes configuration
 │   │   ├── index.css          # Tailwind imports and custom utilities
-│   │   └── main.tsx           # React bootstrap entry point
+│   │   ├── main.tsx           # React bootstrap entry point
+│   │   └── vite-env.d.ts      # TypeScript environment declarations
 │   ├── Dockerfile.dev
 │   ├── package.json
 │   ├── postcss.config.js
@@ -31,6 +33,7 @@ This document details the codebase structure, database models, state management,
 │   └── vite.config.ts         # Vite Server & API Proxy setup
 ├── openspec/                  # OpenSpec Change/Feature specs
 ├── prototype/                 # Static HTML/CSS prototypes (Reference)
+├── .env                       # Local environment variables configuration
 ├── AGENTS.md                  # Development environment guidelines
 ├── docker-compose.yml         # Container configuration file
 └── Makefile                   # Automation hooks
@@ -136,3 +139,19 @@ Styles align with the **Architectural Minimalist** guidelines in `DESIGN.md`:
 - **Exclusive Typography**: `Jost` is the sans-serif font family.
 - **Tailwind Extension**: Custom text tags (`text-display`, `text-headline-lg`, `text-label-caps`, etc.) map font size, line height, letter spacing, and weights directly to CSS tokens.
 - **Borders & Radii**: Hard sharp corners (`border-radius: 0px`) are applied globally. Containers utilize 1px solid borders (`border-on-surface`).
+
+---
+
+## 5. Experimentation & Feature Flagging (GrowthBook SDK)
+
+The application integrates the **GrowthBook React SDK** to support feature flagging, A/B testing, and visual editor targeting.
+
+### 5.1 Connection Configuration
+GrowthBook initialization settings are loaded using environment variables (`VITE_GROWTHBOOK_API_HOST` and `VITE_GROWTHBOOK_CLIENT_KEY`) from the root `.env` file, which are then passed into the container process.
+
+### 5.2 BaselineGrowthBookProvider
+Located in `frontend/src/providers/BaselineGrowthBookProvider.tsx`, this provider wraps the component tree within the router context to handle:
+- **Sticky Bucketing**: Configured cookie-based sticky bucketing via `BrowserCookieStickyBucketService` and `js-cookie`.
+- **SPA Location Sync**: Listens for location changes using React Router's `useLocation()` hook and calls `gb.setURL()` to trigger re-evaluations.
+- **Visual Redirect Overrides**: Hooks into React Router's `useNavigate()` to perform client-side URL redirects without triggering full page reloads.
+- **Custom Attributes**: Dynamically maps cart state (`cartTotal`, `cartItemCount`, and `productNamesInCart`) from the global `CartContext` to GrowthBook attributes.

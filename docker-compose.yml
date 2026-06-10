@@ -11,6 +11,8 @@ services:
       - pnpm_cache:/root/.local/share/pnpm
     environment:
       - NODE_ENV=development
+      - VITE_GROWTHBOOK_API_HOST=${VITE_GROWTHBOOK_API_HOST:-http://growthbook.orb.local:3100}
+      - VITE_GROWTHBOOK_CLIENT_KEY=${VITE_GROWTHBOOK_CLIENT_KEY:-sdk-local-default}
     labels:
       - "dev.orbstack.domains=baseline.orb.local"
 
