@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BASELINE - Checkout</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#ffdad6",
+                        error: "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ece7e7",
+                        "surface-tint": "#384bdf",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        surface: "#fdf8f8",
+                        "on-tertiary-fixed-variant": "#454745",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#636262",
+                        "inverse-surface": "#313030",
+                        "on-tertiary-container": "#a8a9a6",
+                        "on-primary-fixed": "#000a63",
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "surface-container-low": "#f7f2f2",
+                        "inverse-primary": "#bcc2ff",
+                        "tertiary-fixed": "#e2e3e0",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "primary-container": "#001ec0",
+                        "on-primary-container": "#96a1ff",
+                        outline: "#757687",
+                        secondary: "#5e5e5e",
+                        "on-surface": "#1c1b1b",
+                        tertiary: "#262826",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "secondary-container": "#e1dfdf",
+                        "surface-variant": "#e6e1e1",
+                        "surface-dim": "#ddd9d8",
+                        background: "#fdf8f8",
+                        "on-surface-variant": "#454655",
+                        "on-primary-fixed-variant": "#172dc8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#3c3e3c",
+                        "primary-fixed": "#dfe0ff",
+                        "primary-fixed-dim": "#bcc2ff",
+                        "secondary-fixed": "#e4e2e2",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-background": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        primary: "#001184",
+                        "inverse-on-surface": "#f4f0ef",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c7c4",
+                        "outline-variant": "#c5c5d8"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "64px",
+                        unit: "8px",
+                        "section-gap": "128px",
+                        gutter: "24px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px"
+                    },
+                    fontFamily: {
+                        "headline-lg": ["Jost"],
+                        display: ["Jost"],
+                        "headline-md": ["Jost"],
+                        "body-lg": ["Jost"],
+                        "headline-lg-mobile": ["Jost"],
+                        button: ["Jost"],
+                        "label-caps": ["Jost"],
+                        "body-md": ["Jost"],
+                        headline: ["Jost"],
+                        body: ["Jost"],
+                        label: ["Jost"]
+                    },
+                    fontSize: {
+                        "headline-lg": ["40px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        display: ["72px", { lineHeight: "1.1", letterSpacing: "-0.04em", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "1.3", letterSpacing: "-0.01em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" }],
+                        button: ["14px", { lineHeight: "1.0", letterSpacing: "0.02em", fontWeight: "600" }],
+                        "label-caps": ["12px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "1.6", letterSpacing: "0", fontWeight: "400" }]
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        * { border-radius: 0 !important; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            border: 1px solid theme('colors.on-surface') !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+        input:focus, select:focus {
+            outline: none !important;
+            border-color: theme('colors.primary') !important;
+            box-shadow: inset 0 0 0 1px theme('colors.primary') !important;
+        }
+        .blueprint-grid {
+            background-image: 
+                linear-gradient(to right, #e5e2e1 1px, transparent 1px),
+                linear-gradient(to bottom, #e5e2e1 1px, transparent 1px);
+            background-size: 24px 24px;
+            background-position: center top;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col pt-20">
+    <!-- Transactional TopNavBar -->
+    <header class="bg-surface fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 border-b border-on-surface">
+        <a class="font-display text-headline-md font-bold tracking-tighter text-on-surface" href="home.html">BASELINE</a>
+        <div class="flex items-center gap-6">
+            <a class="text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center p-2 hover:bg-surface-container-high" href="cart.html">
+                <span class="material-symbols-outlined">close</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Checkout Canvas -->
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-margin-desktop bg-surface-container-low blueprint-grid">
+        <!-- Flat content container -->
+        <div class="bg-surface border border-on-surface p-6 md:p-12 relative z-10">
+            <div class="mb-12 border-b border-on-surface pb-4">
+                <h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg">Checkout</h1>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-gutter">
+                <!-- Left Column: Form -->
+                <div class="w-full lg:w-2/3 pr-0 lg:pr-12">
+                    <!-- Step 1: Shipping Address -->
+                    <section class="mb-16">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="font-label-caps text-label-caps bg-on-surface text-surface px-2 py-1">S.01</span>
+                            <h2 class="font-headline-md text-headline-md">Shipping Address</h2>
+                        </div>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="flex flex-col">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">First Name</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="Alexander" />
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Last Name</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="Wright" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Company (Optional)</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="Wright Studio" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Address</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="Studio 4B, 1872 Industrial Parkway" />
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Apartment, Suite, etc. (Optional)</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" />
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="flex flex-col md:col-span-1">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">City</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="Seattle" />
+                                </div>
+                                <div class="flex flex-col md:col-span-1">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">State</label>
+                                    <select class="w-full h-12 px-4 font-body-md text-body-md appearance-none">
+                                        <option value="WA" selected>Washington</option>
+                                        <option value="NY">New York</option>
+                                        <option value="CA">California</option>
+                                        <option value="TX">Texas</option>
+                                    </select>
+                                </div>
+                                <div class="flex flex-col md:col-span-1">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Zip Code</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" type="text" value="98101" />
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Phone</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" type="tel" value="206-555-0199" />
+                            </div>
+                        </form>
+                    </section>
+                    <!-- Step 2: Shipping Method -->
+                    <section class="mb-16">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="font-label-caps text-label-caps bg-on-surface text-surface px-2 py-1">S.02</span>
+                            <h2 class="font-headline-md text-headline-md">Shipping Method</h2>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="flex items-center justify-between p-4 border border-on-surface cursor-pointer hover:bg-surface-variant transition-colors">
+                                <div class="flex items-center gap-4">
+                                    <input checked="" class="text-primary focus:ring-primary border-on-surface" name="shipping" type="radio"/>
+                                    <span class="font-body-md text-body-md">Standard Freight (7-14 Business Days)</span>
+                                </div>
+                                <span class="font-body-md text-body-md">$150.00</span>
+                            </label>
+                            <label class="flex items-center justify-between p-4 border border-on-surface cursor-pointer hover:bg-surface-variant transition-colors opacity-50">
+                                <div class="flex items-center gap-4">
+                                    <input class="text-primary focus:ring-primary border-on-surface" disabled="" name="shipping" type="radio"/>
+                                    <span class="font-body-md text-body-md">Expedited Freight (3-5 Business Days) - Unavailable</span>
+                                </div>
+                                <span class="font-body-md text-body-md">$350.00</span>
+                            </label>
+                        </div>
+                    </section>
+                    <!-- Step 3: Payment -->
+                    <section class="mb-16">
+                        <div class="flex items-center gap-4 mb-8">
+                            <span class="font-label-caps text-label-caps bg-on-surface text-surface px-2 py-1">S.03</span>
+                            <h2 class="font-headline-md text-headline-md">Payment</h2>
+                        </div>
+                        <div class="border border-on-surface p-6 space-y-6">
+                            <div class="flex items-center justify-between border-b border-on-surface pb-4 mb-4">
+                                <span class="font-label-caps text-label-caps">Credit Card</span>
+                                <div class="flex gap-2">
+                                    <span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Card Number</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" placeholder="0000 0000 0000 0000" type="text"/>
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div class="flex flex-col">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Expiration (MM/YY)</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" placeholder="MM/YY" type="text"/>
+                                </div>
+                                <div class="flex flex-col">
+                                    <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Security Code</label>
+                                    <input class="w-full h-12 px-4 font-body-md text-body-md" placeholder="CVC" type="text"/>
+                                </div>
+                            </div>
+                            <div class="flex flex-col">
+                                <label class="font-label-caps text-label-caps mb-2 text-on-surface-variant">Name on Card</label>
+                                <input class="w-full h-12 px-4 font-body-md text-body-md" type="text"/>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- Right Column: Project Summary -->
+                <div class="w-full lg:w-1/3 mt-12 lg:mt-0">
+                    <div class="sticky top-28 bg-surface-container-low border border-on-surface p-6">
+                        <h2 class="font-headline-md text-headline-md text-on-surface border-b border-on-surface pb-4 mb-6">Project Summary</h2>
+                        <div class="space-y-6 mb-8">
+                            <!-- Item 1 -->
+                            <div class="flex gap-4">
+                                <div class="w-20 h-20 bg-surface-container-low border border-on-surface overflow-hidden relative">
+                                    <img alt="The Bed Blueprint" class="w-full h-full object-cover mix-blend-multiply grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2fsmbq-TzQfS2URzEOltdqumjcTdEK3CBYGw0pSMpLTWwCtkoRETHw9SXVgSDrJlgBB6fYRS9R3yOVVaQ6OmyG1LC9Vkf5CX3ktNfyGK5braUB9d8fN4pDBhnj4gmn9hApQfA0v_uy1fMU9uA9o1J3swZoSSuZEJydHY-8LnJYK2f3KoreJTMiT1IiCkk8SXO_EZZr6-dom1igJNVB4RN7nUqTX-0WNnCd6jewBqJhzku9zHQE6VA8GV1u-nb53YD84A7J6__lg"/>
+                                </div>
+                                <div class="flex-grow flex flex-col justify-between">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h4 class="font-label-caps text-label-caps text-on-surface">The Bed Blueprint</h4>
+                                            <span class="font-body-md text-body-md">$1,450</span>
+                                        </div>
+                                        <p class="font-label-caps text-label-caps text-on-surface-variant mt-1">Qty: 1</p>
+                                    </div>
+                                    <p class="font-label-caps text-label-caps text-on-surface-variant">Mat: Natural Birch</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-on-surface pt-4 space-y-4 mb-8">
+                            <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                                <span>Subtotal</span>
+                                <span>$1,450.00</span>
+                            </div>
+                            <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                                <span>Freight Estimate</span>
+                                <span>$150.00</span>
+                            </div>
+                            <div class="flex justify-between font-body-md text-body-md text-on-surface-variant">
+                                <span>Tax (Calculated)</span>
+                                <span>$123.25</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between font-headline-md text-headline-md text-on-surface border-t border-on-surface pt-6 mb-8">
+                            <span>Total</span>
+                            <span>$1,723.25</span>
+                        </div>
+                        <a href="order-confirmation.html" class="w-full bg-primary text-on-primary h-14 font-button text-button flex items-center justify-center hover:bg-on-primary-fixed-variant transition-colors border border-primary">
+                            Authorize &amp; Place Order
+                        </a>
+                        <p class="font-label-caps text-label-caps text-on-surface-variant text-center mt-4">Secure Transaction Encrypted</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-low w-full mt-auto mt-8">
+        <div class="flex flex-col gap-4 px-margin-desktop py-section-gap max-w-container-max mx-auto md:px-margin-desktop px-margin-mobile">
+            <span class="font-display text-headline-md font-bold text-on-surface">BASELINE</span>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-y-4 gap-x-8">
+                <p class="font-label-caps text-label-caps text-secondary">© 2026 BASELINE ARCHITECTURAL BLUEPRINTS</p>
+                <div class="flex flex-wrap gap-x-8 gap-y-4 font-label-caps text-label-caps">
+                    <a class="text-secondary hover:text-on-surface underline transition-all duration-300" href="#">Materials</a>
+                    <a class="text-secondary hover:text-on-surface underline transition-all duration-300" href="#">Sustainability</a>
+                    <a class="text-secondary hover:text-on-surface underline transition-all duration-300" href="#">Terms</a>
+                    <a class="text-secondary hover:text-on-surface underline transition-all duration-300" href="#">Stockists</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
