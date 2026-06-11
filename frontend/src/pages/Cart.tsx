@@ -10,12 +10,12 @@ export default function Cart() {
   const totalItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div className="antialiased min-h-screen flex flex-col font-sans bg-surface text-on-surface">
+    <div className="antialiased min-h-screen flex flex-col font-sans bg-surface text-on-surface pt-20">
       <TopNavBar />
       <CartDrawer />
 
       {/* Main Canvas */}
-      <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-margin-desktop bg-surface-container-low blueprint-grid pt-28">
+      <main className="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-margin-desktop bg-surface-container-low blueprint-grid">
         <div className="bg-surface border border-on-surface p-6 md:p-12 relative z-10">
           <div className="mb-16">
             <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">

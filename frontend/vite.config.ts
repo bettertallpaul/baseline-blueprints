@@ -13,11 +13,6 @@ export default defineConfig({
         target: 'http://backend:3000',
         changeOrigin: true,
       },
-      '/growthbook-api': {
-        target: 'http://growthbook.orb.local:3100',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/growthbook-api/, ''),
-      },
     },
   },
 });

@@ -9,9 +9,10 @@ import { useCart } from '../context/CartContext';
 let reactRouterNavigate: ((url: string) => void) | null = null;
 
 const gb = new GrowthBook({
-  apiHost: import.meta.env.VITE_GROWTHBOOK_API_HOST || 'http://growthbook.orb.local:3100',
-  clientKey: import.meta.env.VITE_GROWTHBOOK_CLIENT_KEY || 'sdk-local-default',
-  enableDevMode: import.meta.env.DEV,
+  apiHost: import.meta.env.VITE_GROWTHBOOK_API_HOST,
+  clientKey: import.meta.env.VITE_GROWTHBOOK_CLIENT_KEY,
+  enableDevMode: import.meta.env.VITE_GROWTHBOOK_DEV_MODE === 'true',
+  subscribeToChanges: true,
   stickyBucketService: new BrowserCookieStickyBucketService({
     jsCookie: Cookies,
   }),
@@ -75,7 +76,9 @@ export const BaselineGrowthBookProvider: React.FC<{ children: React.ReactNode }>
 
   // Initialize SDK client and start listening for feature updates
   useEffect(() => {
-    gb.init({ streaming: true });
+    gb.init({ streaming: true }).catch((err) => {
+      console.error('Failed to initialize GrowthBook:', err);
+    });
   }, []);
 
   return (

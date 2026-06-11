@@ -24,3 +24,12 @@ body {
 .material-symbols-outlined.fill {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
+
+/* Dynamic layout adjustments when promotional banner is active */
+body:has(#top-promo-banner) .pt-20 {
+  padding-top: calc(5rem + 48px) !important; /* 80px + 48px = 128px */
+}
+
+body:has(#top-promo-banner) .sticky.top-28 {
+  top: calc(7rem + 48px) !important; /* 112px + 48px = 160px */
+}
