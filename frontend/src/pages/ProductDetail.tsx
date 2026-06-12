@@ -49,13 +49,8 @@ interface Product {
   };
 }
 
-interface ProductDetailProps {
-  id?: string;
-}
-
-export default function ProductDetail({ id: propId }: ProductDetailProps) {
-  const { id: routeId } = useParams<{ id: string }>();
-  const id = propId || routeId;
+export default function ProductDetail() {
+  const { id } = useParams<{ id: string }>();
 
   const { addToCart } = useCart();
   const isAltGallery = useFeatureIsOn('pdp-image-viewer-layout');
