@@ -8,9 +8,9 @@ Assume projects run inside containers by default.
   - `Dockerfile.dev`  
   - `docker-compose.yml`  
   - `Makefile` with: `up`, `shell`, `install`, `dev`, `build`, `test`, `down`  
-  - `.gitignore` (Exclude node_modules, local builds, and .git)
-- Use `node:22-bookworm-slim` + Corepack/pnpm for Node projects.  
-- Keep source bind-mounted, and use named volumes for `node_modules` and package caches.  
+  - `.gitignore` (Must strictly exclude: `node_modules` [no trailing slash], and standard local/build files for Node/Vite that shouldn't make their way to GitHub).
+- Use `node:22-bookworm-slim` for Node projects. Install pnpm explicitly via `npm install -g pnpm` (avoid `corepack enable` as it is deprecated in Node 22+).  
+- Keep source bind-mounted. Use named volumes for package caches (e.g., `pnpm_cache`). **CRITICAL:** Do NOT use named or anonymous volumes for `node_modules`. It must write directly back to the host via the parent bind mount to support IDE toolchains/linting.  
 - Bind dev servers to `0.0.0.0` inside container and publish ports in Compose.  
 - Prefer ARM-native images on Apple Silicon; only force `linux/amd64` when required by dependencies.  
 - When troubleshooting, check in order:
