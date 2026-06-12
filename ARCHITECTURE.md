@@ -155,3 +155,11 @@ Located in `frontend/src/providers/BaselineGrowthBookProvider.tsx`, this provide
 - **SPA Location Sync**: Listens for location changes using React Router's `useLocation()` hook and calls `gb.setURL()` to trigger re-evaluations.
 - **Visual Redirect Overrides**: Hooks into React Router's `useNavigate()` to perform client-side URL redirects without triggering full page reloads.
 - **Custom Attributes**: Dynamically maps cart state (`cartTotal`, `cartItemCount`, and `productNamesInCart`) from the global `CartContext` to GrowthBook attributes.
+
+### 5.3 Product Detail Page Layout Experimentation (`pdp-image-viewer-layout`)
+We run layout experiments on the Product Detail Page (PDP) using the `pdp-image-viewer-layout` feature flag (variations: `default` vs `alt-gallery`):
+- **ProductImageViewer**: Acts as the orchestrator component. It queries `useFeatureValue('pdp-image-viewer-layout', 'default')` to determine which layout to display.
+- **SingleImageViewer**: Renders the default static single product image.
+- **ThumbnailImageViewer**: Renders the alternate product gallery layout, which aggregates the main product image and all detail images. It displays thumbnails vertically on desktop (left of the main viewport) and horizontally on mobile (below the main viewport).
+- **Details Grid Hiding**: When the active variation is `alt-gallery`, the bottom product details grid section in `ProductDetail.tsx` is hidden to avoid duplicate image presentation.
+

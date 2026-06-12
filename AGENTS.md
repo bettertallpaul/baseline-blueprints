@@ -33,3 +33,5 @@ Assume projects run inside containers by default.
   - Rebuild image assets using `make build`.
   - Verify container status with `docker compose ps` and check logs using `docker compose logs -f`.
   - Execute testing commands using `make test`.
+- **A/B Testing & Flags**:
+  - PDP Alternate Image Viewer layout toggled using GrowthBook feature flag `pdp-image-viewer-layout` with variations `default` and `alt-gallery`.
