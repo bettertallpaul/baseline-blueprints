@@ -32,7 +32,7 @@ export default function TopNavBar() {
               BLUEPRINTS
             </Link>
             <Link
-              className={`text-label-caps font-label-caps pb-1 pt-1 border-t-2 border-t-transparent border-b-2 transition-all duration-300 ${isActive('/product/bed') || isActive('/pdp-bed.html')
+              className={`text-label-caps font-label-caps pb-1 pt-1 border-t-2 border-t-transparent border-b-2 transition-all duration-300 ${isActive('/product/bed')
                   ? 'text-primary border-b-primary'
                   : 'text-secondary border-b-transparent hover:text-on-surface'
                 }`}
@@ -59,7 +59,7 @@ export default function TopNavBar() {
               STORAGE
             </Link>
             <Link
-              className={`text-label-caps font-label-caps pb-1 pt-1 border-t-2 border-t-transparent border-b-2 transition-all duration-300 ${isActive('/product/table') || isActive('/pdp-table.html')
+              className={`text-label-caps font-label-caps pb-1 pt-1 border-t-2 border-t-transparent border-b-2 transition-all duration-300 ${isActive('/product/table')
                   ? 'text-primary border-b-primary'
                   : 'text-secondary border-b-transparent hover:text-on-surface'
                 }`}

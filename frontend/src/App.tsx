@@ -15,21 +15,10 @@ export default function App() {
         <BaselineGrowthBookProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/home.html" element={<Navigate to="/" replace />} />
-            
-            {/* Support both legacy direct html path names and REST dynamic ids */}
-            <Route path="/pdp-bed.html" element={<ProductDetail id="bed" />} />
-            <Route path="/pdp-table.html" element={<ProductDetail id="table" />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            
             <Route path="/cart" element={<Cart />} />
-            <Route path="/cart.html" element={<Navigate to="/cart" replace />} />
-            
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout.html" element={<Navigate to="/checkout" replace />} />
-            
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
-            <Route path="/order-confirmation.html" element={<Navigate to="/order-confirmation" replace />} />
 
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
