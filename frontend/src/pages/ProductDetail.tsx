@@ -4,6 +4,9 @@ import TopNavBar from '../components/TopNavBar.tsx';
 import CartDrawer from '../components/CartDrawer.tsx';
 import Footer from '../components/Footer.tsx';
 import { useCart } from '../context/CartContext.tsx';
+import ProductImageViewer from '../components/ProductImageViewer.tsx';
+import { useFeatureIsOn } from '@growthbook/growthbook-react';
+
 
 interface SizeOption {
   id: string;
@@ -55,6 +58,7 @@ export default function ProductDetail({ id: propId }: ProductDetailProps) {
   const id = propId || routeId;
 
   const { addToCart } = useCart();
+  const isAltGallery = useFeatureIsOn('pdp-image-viewer-layout');
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -177,13 +181,12 @@ export default function ProductDetail({ id: propId }: ProductDetailProps) {
         <section className="max-w-container-max mx-auto border-b border-on-surface">
           <div className="grid grid-cols-1 md:grid-cols-12">
             {/* Image Area */}
-            <div className="md:col-span-8 bg-surface-container-low border-b md:border-b-0 md:border-r border-on-surface flex items-center justify-center p-margin-mobile md:p-margin-desktop min-h-[400px] md:min-h-[600px]">
-              <img
-                alt={product.name}
-                className="w-full h-auto object-contain max-h-[600px] mix-blend-multiply"
-                src={product.image}
-              />
-            </div>
+            <ProductImageViewer
+              name={product.name}
+              image={product.image}
+              detailImages={product.detailImages}
+            />
+
 
             {/* Configurator Panel */}
             <div className="md:col-span-4 bg-surface p-margin-mobile md:p-margin-desktop flex flex-col justify-center">
@@ -311,7 +314,7 @@ export default function ProductDetail({ id: propId }: ProductDetailProps) {
             <h2 className="text-label-caps font-label-caps text-secondary mb-4">Architectural Utility</h2>
             <h3 className="text-headline-md font-headline-md mb-6 font-bold">Designed for adaptability.</h3>
             <p className="text-body-md text-on-surface-variant leading-relaxed">
-              The {product.name.toLowerCase()} scales to your spatial requirements. Add or remove modular components
+              {product.name} scales to your spatial requirements. Add or remove modular components
               as your environment evolves.
             </p>
           </div>
@@ -387,7 +390,7 @@ export default function ProductDetail({ id: propId }: ProductDetailProps) {
         </section>
 
         {/* Product Details Grid Section */}
-        {product.detailImages.length > 0 && (
+        {!isAltGallery && product.detailImages.length > 0 && (
           <section className="max-w-container-max mx-auto py-section-gap px-margin-mobile md:px-margin-desktop">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
               {/* Left Column: Primary Detail Image */}

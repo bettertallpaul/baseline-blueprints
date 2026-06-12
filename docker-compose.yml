@@ -16,6 +16,7 @@ services:
       - VITE_GROWTHBOOK_DEV_MODE=${VITE_GROWTHBOOK_DEV_MODE:-true}
     labels:
       - "dev.orbstack.domains=baseline.orb.local"
+      - "dev.orbstack.http-port=5173"
 
   backend:
     build:
@@ -31,6 +32,7 @@ services:
       - NODE_ENV=development
     labels:
       - "dev.orbstack.domains=api.baseline.orb.local"
+      - "dev.orbstack.http-port=3000"
 
 volumes:
   frontend_node_modules:
