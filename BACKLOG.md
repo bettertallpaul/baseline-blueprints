@@ -10,4 +10,5 @@
 - [ ] 
 
 ## COMPLETE
-- [x] Example completed task
+- [x] Creation of the core app, frontend + backend
+- [x] Growthbook integration
