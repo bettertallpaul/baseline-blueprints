@@ -42,7 +42,6 @@ Once running, the applications are exposed on the host machine:
 make down
 ```
 
----
 
 ## Makefile Target Summary
 
@@ -54,7 +53,6 @@ make down
 - `make build` - Rebuild the Docker images.
 - `make test` - Execute tests within the containers.
 
----
 
 ## REST API Endpoints
 
