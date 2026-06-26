@@ -1,9 +1,16 @@
+# Package manager caches & dependencies
 .pnpm-store/
 node_modules
+
+# Build outputs & caches
 dist/
-build/
-.DS_Store
-*.log
+.vite/
+.eslintcache
+*.tsbuildinfo
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+
+# Environment & Local Databases
 .env
 .env.local
 .env.development.local
@@ -11,33 +18,18 @@ build/
 .env.production.local
 db.json
 
-# IDEs and editors
-.idea/
-.vscode/
-.antigravity/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.swp
-
-# Build caches & temp files
-.eslintcache
-*.tsbuildinfo
-vite.config.ts.timestamp-*
-vite.config.js.timestamp-*
-
-# Testing
-coverage/
-.nyc_output/
-
-# Docker
+# Docker overrides
 docker-compose.override.yml
 
-# OS files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+# IDEs & Editor configurations
+.vscode/
+.idea/
+.antigravity/
+*.swp
 
-# Vite
-.vite/
+# Logs & Diagnostics
+*.log
+coverage/
+
+# OS-specific files
+.DS_Store
